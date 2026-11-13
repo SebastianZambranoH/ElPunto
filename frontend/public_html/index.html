@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
-                <li><a href="#cotizacion">Cotización</a></li>
+                <li><a href="cotizacion.html">Cotización</a></li>
                 <li><a href="#horarios">Visitanos</a></li>
             </ul>
         </nav>
@@ -43,36 +43,90 @@
         </section>
 
         <section id="productos" class="seccion-productos">
-            <h2>Nuestros Productos</h2>
-            <div class="contenedor-platos">
+        <h2>Nuestros Productos</h2>
+        
+        <div class="contenedor-platos">
+            <!-- Columna Lechona -->
+            <div class="columna-categoria">
+                <h3 class="titulo-categoria">Lechona</h3>
                 
                 <article class="plato">
-                    <h3>Tamales Tolimenses</h3>
-                    <p>Masa de maíz con cerdo, pollo, huevo, zanahoria y arveja, envuelto en hoja de plátano.</p>
-                    <span class="precio">$12.000</span>
+                    <div class="plato-info">
+                        <h4>Plato Estándar</h4>
+                        <span class="precio">$12.000</span>
+                    </div>
+                    <div class="plato-img">IMG</div>
+                    <div class="tooltip">Masa de maíz con cerdo, pollo, huevo, zanahoria y arveja.</div>
                 </article>
 
                 <article class="plato">
-                    <h3>Plato de Lechona</h3>
-                    <p>Cuero crujiente, carne de cerdo tierna y arveja amarilla, acompañada de arepa.</p>
-                    <span class="precio">$15.000</span>
+                    <div class="plato-info">
+                        <h4>Plato Especial</h4>
+                        <span class="precio">$15.000</span>
+                    </div>
+                    <div class="plato-img">IMG</div>
+                    <div class="tooltip">Cuero crujiente, carne de cerdo tierna y arveja amarilla.</div>
+                </article>
+            </div>
+
+            <!-- Columna Tamales -->
+            <div class="columna-categoria">
+                <h3 class="titulo-categoria">Tamales</h3>
+                
+                <article class="plato">
+                    <div class="plato-info">
+                        <h4>Tamal Tolimense</h4>
+                        <span class="precio">$7.000</span>
+                    </div>
+                    <div class="plato-img">IMG</div>
+                    <div class="tooltip">Receta tradicional envuelta en hoja de plátano.</div>
                 </article>
 
+                <article class="plato">
+                    <div class="plato-info">
+                        <h4>Tamal Volteado</h4>
+                        <span class="precio">$15.000</span>
+                    </div>
+                    <div class="plato-img">IMG</div>
+                    <div class="tooltip">Doble porción de carne y cama de lechona.</div>
+                </article>
             </div>
-        </section>
+        </div>
+    </section>
+        <section id="ubicacion" class="seccion-ubicacion">
+            <h2>Visítanos</h2>
+            
+            <div class="grid-ubicacion">
+                
+                <div class="mapa-contenedor">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127255.1278148868!2d-74.1610488669527!3d4.648283713506161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2zQm9nb3TDoQ!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
 
-        <section id="horarios" class="seccion-horarios">
-            <h2>Horarios de Atención</h2>
-            <div class="info-horarios">
-                <p><strong>Lunes a Miércoles:</strong> Cerrado</p>
-                <p><strong>Jueves y Viernes:</strong> Producción exclusiva (Solo pedidos anticipados)</p>
-                <p><strong>Viernes a Domingo:</strong> Atención en punto de venta - 8:00 AM a 4:00 PM</p>
+                <div class="info-contacto">
+                    <h3>Lechonería y Tamalería El Punto</h3>
+                    <p><strong>Dirección:</strong> Bogotá, Colombia</p>
+                    
+                    <div class="info-horarios">
+                        <h4>Horarios de Atención</h4>
+                        <p><strong>Lunes a Miércoles:</strong> Cerrado</p>
+                        <p><strong>Jueves y Viernes:</strong> Producción exclusiva (Solo pedidos anticipados)</p>
+                        <p><strong>Viernes a Domingo:</strong> Atención en punto de venta - 8:00 AM a 4:00 PM</p>
+                    </div>
+                    
+                    <div class="botones-contacto">
+                        <button class="contacto-button">Contáctanos</button>
+                        <button class="contacto-button"><a href="cotizacion.html">Solicitar Cotización</a></button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer-principal">
-        <p>&copy; 2026 Lechonería y Tamalería El Punto. Todos los derechos reservados.</p>
+        <div class="contenedor-footer">
+            <p>&copy; 2026 Lechonería y Tamalería El Punto. Todos los derechos reservados.</p>
+            <a href="sesion.html" class="enlace-admin">Acceso Administrativo</a>
+        </div>
     </footer>
 
 </body>
