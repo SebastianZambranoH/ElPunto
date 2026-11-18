@@ -1,12 +1,18 @@
-
+/* =========================================
+   VARIABLES GLOBALES
+   ========================================= */
 :root {
     --color-primario: #014204;
     --color-secundario: #573c01;
+    --color-acento-claro: #d97706; /* Tono dorado/ámbar para destacar sobre fondos muy oscuros */
     --color-fondo: #f9f9f9;
     --color-texto: #333333;
     --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* =========================================
+   RESETEO BÁSICO
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -20,14 +26,39 @@ body {
     line-height: 1.6;
 }
 
+/* =========================================
+   ENCABEZADO Y NAVEGACIÓN
+   ========================================= */
 .header-principal {
     background-color: var(--color-primario);
     color: white;
-    padding: 1rem;
+    padding: 1.5rem 1.5rem; /* Aumentamos el relleno vertical para agrandar el header */
     display: flex;
     flex-direction: column; 
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.logo img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    margin: 0;
 }
 
 .navegacion ul {
@@ -42,45 +73,204 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.05rem;
     display: block;
     padding: 0.5rem;
+    transition: color 0.3s ease;
 }
 
 .navegacion a:hover {
-    color: var(--color-secundario);
+    color: var(--color-acento-claro);
 }
 
-.hero {
-    background-image : url('../img/lechona.jpg');
+.hero-carrusel {
+    position: relative;
+    width: 100%;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background-color: #1c1917;
+}
+
+.carrusel-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    padding: 5rem 1rem;
-    color: white;
-    text-align: center;
-    padding: 3rem 1rem;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
 }
 
-.texto-hero {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1rem;
-    border-radius: 8px;
-    display: inline-block;
-    max-width: 55rem;
-    margin-top: 1rem;
+.slide.activo {
+    opacity: 1;
 }
 
-.hero h2 {
-    font-size: 1.8rem;
+/* Capa oscura sobre las fotos para garantizar que el texto siempre se lea bien */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 2; /* Por encima de las imágenes */
+    max-width: 800px;
+    padding: 2rem 3.5rem;
+}
+
+.hero-contenido h2 {
+    font-size: 2.3rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
+.subtitulo-hero {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    color: #f3f4f6;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-botones {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-botones .contacto-button {
+    margin-top: 0;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secundario-hero {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* Flechas laterales */
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.8rem 1rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.carrusel-btn:hover {
+    background-color: var(--color-primario);
+}
+
+.carrusel-btn.prev { left: 1rem; }
+.carrusel-btn.next { right: 1rem; }
+
+/* Puntos indicadores inferiores */
+.carrusel-indicadores {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 0.6rem;
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicador.activo {
+    background-color: var(--color-acento-claro);
+    transform: scale(1.2);
+}
+
+/* =========================================
+   SECCIÓN NOSOTROS (FONDO DE MADERA)
+   ========================================= */
+.seccion-nosotros {
+    padding: 4.5rem 1.5rem;
+    background-image: linear-gradient(rgba(28, 25, 23, 0.82), rgba(28, 25, 23, 0.88)), url('../img/fondo-madera.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f5f5f4;
+    border-top: 4px solid var(--color-secundario);
+    border-bottom: 4px solid var(--color-primario);
+    text-align: center;
+}
+
+.contenedor-nosotros {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.contenedor-nosotros h2 {
+    color: white;
+    font-size: 2.1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.contenedor-nosotros p {
+    margin-bottom: 1.2rem;
+    font-size: 1.08rem;
+    color: #e7e5e4;
+    line-height: 1.8;
+}
+
+.contenedor-nosotros strong {
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .hero-contenido h2 {
+        font-size: 3.2rem;
+    }
+}
+
+/* =========================================
+   BOTONES GLOBALES
+   ========================================= */
 .contacto-button {
     background-color: var(--color-primario);
     color: white;
     border: 2px solid white;
     padding: 0.8rem 2rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     border-radius: 5px;
     margin-top: 2rem; 
@@ -91,10 +281,14 @@ body {
 .contacto-button:hover {
     background-color: white; 
     color: var(--color-secundario); 
+    border-color: var(--color-secundario);
     transform: scale(1.05); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* =========================================
+   SECCIÓN PRODUCTOS Y TOOLTIPS
+   ========================================= */
 .seccion-productos {
     padding: 3rem 1rem;
     text-align: center;
@@ -118,7 +312,6 @@ body {
     padding-bottom: 0.5rem;
 }
 
-/* Diseño de la tarjeta manteniendo tus estilos */
 .plato {
     background: white;
     border: 1px solid #ddd;
@@ -130,7 +323,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
-    position: relative; /* Clave para el tooltip */
+    position: relative;
 }
 
 .plato:hover {
@@ -161,13 +354,12 @@ body {
     color: #888;
 }
 
-/* Ventana emergente (Tooltip) */
 .tooltip {
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333;
+    background-color: #222;
     color: white;
     padding: 0.8rem;
     border-radius: 6px;
@@ -184,71 +376,6 @@ body {
     opacity: 1;
     visibility: visible;
     bottom: 105%;
-}
-
-/* Media query para escritorio (dos columnas) */
-@media (min-width: 768px) {
-    .contenedor-platos {
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-    }
-}
-
-.footer-principal {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #222;
-    color: white;
-    font-size: 0.9rem;
-}
-
-.enlace-admin {
-    color: #888;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
-}
-
-.enlace-admin:hover {
-    color: var(--color-secundario);
-}
-
-@media (min-width: 768px) {
-    .contenedor-footer {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-@media (min-width: 768px) {
-    
-    .header-principal {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem 3rem;
-    }
-
-    .navegacion ul {
-        flex-direction: row;
-        gap: 2rem;
-    }
-
-    .hero {
-        padding: 5rem 2rem;
-    }
-
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-
-    .contenedor-platos {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        padding: 0 2rem;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
 }
 
 /* =========================================
@@ -306,18 +433,35 @@ body {
     font-size: 0.95rem;
 }
 
+.botones-contacto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .info-contacto .contacto-button {
-    margin: 1rem 0 0 0; 
-    align-self: flex-start; 
+    margin: 0.5rem 0 0 0; 
 }
 
-@media (min-width: 768px) {
-    .grid-ubicacion {
-        grid-template-columns: 1fr 1fr; 
-        gap: 3rem;
-    }
+.plato-img {
+    width: 100px;
+    height: 80px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #888;
+    overflow: hidden;
 }
 
+.plato-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 /* =========================================
    PÁGINA DE COTIZACIÓN
@@ -379,6 +523,24 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+.contenedor-img-resumen {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1.2rem;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+.contenedor-img-resumen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
 .tarjeta-resumen h4 {
     font-size: 1.3rem;
     color: var(--color-secundario);
@@ -404,12 +566,6 @@ body {
 .tarjeta-resumen .contacto-button {
     width: 100%;
     margin-top: 1rem;
-}
-
-@media (min-width: 768px) {
-    .grid-cotizacion {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 /* =========================================
@@ -475,7 +631,7 @@ body {
 .formulario-admin input:focus {
     outline: none;
     border-color: var(--color-primario);
-    box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+    box-shadow: 0 0 5px rgba(1, 66, 4, 0.3);
 }
 
 .btn-login {
@@ -498,4 +654,165 @@ body {
 .enlaces-login a:hover {
     color: var(--color-primario);
     text-decoration: underline;
+}
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER PROFESIONAL)
+   ========================================= */
+.footer-principal {
+    background-image: linear-gradient(rgba(28, 25, 23, 0.82), rgba(28, 25, 23, 0.88)), url('../img/fondo-madera.jpg');
+    color: #e7e5e4;
+    padding: 3.5rem 1.5rem 1.5rem;
+    font-size: 0.95rem;
+    margin-top: 4rem;
+    border-top: 4px solid var(--color-primario);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
+}
+
+.footer-columna h3 {
+    color: var(--color-acento-claro);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.footer-columna h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--color-primario);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+.footer-columna p {
+    color: #a8a29e;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+.footer-columna ul {
+    list-style: none;
+}
+
+.footer-columna ul li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-columna ul a {
+    color: #a8a29e;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-columna ul a:hover {
+    color: var(--color-acento-claro);
+    padding-left: 5px;
+}
+
+.footer-redes {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn-social {
+    background-color: #292524;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid #44403c;
+    transition: all 0.3s ease;
+}
+
+.btn-social:hover {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #292524;
+    padding-top: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    color: #78716c;
+    font-size: 0.85rem;
+}
+
+.enlace-admin {
+    color: #78716c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.enlace-admin:hover {
+    color: var(--color-acento-claro);
+    text-decoration: underline;
+}
+
+/* =========================================
+   MEDIA QUERIES (TABLETS Y ESCRITORIOS)
+   ========================================= */
+@media (min-width: 768px) {
+    .header-principal {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 3rem;
+    }
+
+    .navegacion ul {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .hero {
+        padding: 5rem 2rem;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .contenedor-platos {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .grid-ubicacion {
+        grid-template-columns: 1fr 1fr; 
+        gap: 3rem;
+    }
+
+    .grid-cotizacion {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1.2fr;
+        gap: 3rem;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

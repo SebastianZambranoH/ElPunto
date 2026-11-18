@@ -23,16 +23,12 @@
         <h2>Arma tu Pedido</h2>
         
         <div class="grid-cotizacion">
-            <!-- Zona del Formulario -->
             <section class="formulario-pedido">
                 <form id="form-pedido">
                     <div class="grupo-input">
                         <label for="producto">Selecciona el Producto:</label>
-                        <select id="producto" name="producto">
-                            <option value="tamal">Tamal Tolimense</option>
-                            <option value="plato-lechona">Plato de Lechona</option>
-                            <option value="cojin-lechona">Cojín de Lechona (Eventos)</option>
-                        </select>
+                        <!-- JS llenará estas opciones dinámicamente -->
+                        <select id="producto" name="producto"></select>
                     </div>
 
                     <div class="grupo-input">
@@ -47,29 +43,64 @@
                 </form>
             </section>
 
-            <!-- Zona de Desglose / Resumen -->
             <section class="resumen-pedido">
                 <h3>Desglose de Cotización</h3>
                 <div class="tarjeta-resumen">
-                    <h4 id="resumen-titulo">1 Tamal Tolimense</h4>
-                    <p id="resumen-descripcion">Masa de maíz con cerdo, pollo, huevo, zanahoria y arveja, envuelto en hoja de plátano.</p>
+                    <!-- Contenedor para la imagen dinámica del producto -->
+                    <div class="contenedor-img-resumen">
+                        <img id="resumen-img" src="" alt="Vista previa del producto">
+                    </div>
+
+                    <h4 id="resumen-titulo"></h4>
+                    <p id="resumen-descripcion"></p>
                     
                     <hr>
                     
-                    <p><strong>Entregar en:</strong> <span id="resumen-dir">Por definir</span></p>
-                    <p class="precio-total"><strong>Total estimado:</strong> <span id="resumen-precio">$12.000</span></p>
+                    <p><strong>Entregar en:</strong> <span id="resumen-dir"></span></p>
+                    <p class="precio-total"><strong>Total estimado:</strong> <span id="resumen-precio"></span></p>
                     
-                    <button class="contacto-button" id="btn-whatsapp">Enviar pedido por WhatsApp</button>
+                    <button type="button" class="contacto-button" id="btn-whatsapp">Enviar pedido por WhatsApp</button>
                 </div>
             </section>
         </div>
     </main>
 
     <footer class="footer-principal">
-        <p>&copy; 2026 Lechonería y Tamalería El Punto. Todos los derechos reservados.</p>
+        <div class="footer-grid">
+            <div class="footer-columna">
+                <h3>El Punto</h3>
+                <p>Auténtica lechona y tamales tolimenses preparados bajo tradición artesanal. Punto de fábrica directo a tu mesa en Bogotá.</p>
+            </div>
+
+            <div class="footer-columna">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#productos">Nuestros Productos</a></li>
+                    <li><a href="cotizacion.html">Cotiza tu Pedido</a></li>
+                    <li><a href="index.html#ubicacion">Ubicación y Horarios</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h4>Contacto y Pedidos</h4>
+                <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
+                <p><strong>Atención en punto:</strong> Vie - Dom (8:00 AM - 4:00 PM)</p>
+                <p><strong>Pedidos especiales:</strong> Jueves y Viernes</p>
+                <div class="footer-redes">
+                    <a href="https://wa.me/573000000000" target="_blank" class="btn-social">WhatsApp</a>
+                    <a href="#" target="_blank" class="btn-social">Instagram</a>
+                    <a href="#" target="_blank" class="btn-social">Facebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Lechonería y Tamalería El Punto. Todos los derechos reservados.</p>
+            <a href="sesion.html" class="enlace-admin">Acceso Administrativo</a>
+        </div>
     </footer>
 
-    <!-- Vinculamos la lógica de JavaScript -->
-    <script src="js/app.js"></script>
+    <script src="js/cotizacion.js"></script>
 </body>
 </html>

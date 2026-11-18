@@ -10,6 +10,7 @@
 
     <header class="header-principal">
         <div class="logo">
+            <img src="img/logo.png" alt="Logo Lechonería y Tamalería El Punto">
             <h1>El Punto</h1>
         </div>
         <nav class="navegacion">
@@ -17,82 +18,45 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="cotizacion.html">Cotización</a></li>
-                <li><a href="#horarios">Visitanos</a></li>
+                <li><a href="#ubicacion">Visítanos</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="inicio" class="hero">
-            <h2>Lo Mejor De La Cocina Tolimense</h2>
-            <div class="texto-hero">
-                <p>En <strong>Lechonería y Tamalería El Punto</strong>, somos embajadores del auténtico sabor del Tolima en el corazón de 
-                    Bogotá. Nacimos con la firme convicción de preservar celosamente las recetas tradicionales, respetando los tiempos de 
-                    cocción, los adobos originales y la envoltura clásica en hoja de plátano que le otorga a nuestros platos su aroma y 
-                    carácter inconfundible.</p>    
-                <p>Más que un restaurante, <strong>somos punto de fábrica</strong>. Operar bajo este modelo nos permite tener control 
-                    absoluto sobre la calidad de cada ingrediente. Dedicamos nuestros días de semana a la manufactura a puerta cerrada, 
-                    preparando las carnes, el maíz y los guisos con la paciencia que exige la verdadera gastronomía artesanal.
-                    Así garantizamos que cada fin de semana, cuando abrimos nuestras puertas al público, disfrutes de un tamal recién 
-                    hecho y una lechona con el cuero perfectamente crujiente.</p>
-                <p>Nuestro compromiso es simple: mantener viva la tradición en cada bocado, ofreciendo un producto honesto, fresco y directo 
-                    de nuestros hornos a tu mesa.</p>
+        <section id="inicio" class="hero-carrusel">
+            <div class="carrusel-slides" id="carrusel-slides"></div>
+
+            <div class="hero-contenido">
+                <h2>El Auténtico Sabor Tolimense</h2>
+                <p class="subtitulo-hero">Punto de fábrica en Bogotá. Lechona crocante y tamales artesanales recién salidos del horno.</p>
+                <div class="hero-botones">
+                    <a href="cotizacion.html" class="contacto-button">Cotizar Pedido</a>
+                    <button class="contacto-button btn-secundario-hero btn-whatsapp-directo">Contáctanos</button>
+                </div>
             </div>
-        <br>
-        <button class="contacto-button" onclick="">Contáctanos</button>
+
+            <button class="carrusel-btn prev" id="btn-prev" aria-label="Imagen anterior">&#10094;</button>
+            <button class="carrusel-btn next" id="btn-next" aria-label="Siguiente imagen">&#10095;</button>
+            
+            <!-- Puntos inferiores -->
+            <div class="carrusel-indicadores" id="carrusel-indicadores"></div>
+        </section>
+
+        <section id="nosotros" class="seccion-nosotros">
+            <div class="contenedor-nosotros">
+                <h2>Tradición Tolimense, Directo de Fábrica</h2>
+                <p>En <strong>Lechonería y Tamalería El Punto</strong>, somos embajadores del auténtico sabor del Tolima en el corazón de Bogotá. Nacimos con la firme convicción de preservar celosamente las recetas tradicionales, respetando los tiempos de cocción, los adobos originales y la envoltura clásica en hoja de plátano.</p>
+                <p>Más que un restaurante, <strong>somos punto de fábrica</strong>. Dedicamos nuestros días de semana a la manufactura a puerta cerrada, preparando las carnes, el maíz y los guisos con paciencia artesanal para que cada fin de semana disfrutes de un producto fresco y honesto.</p>
+            </div>
+        <button class="contacto-button btn-whatsapp-directo">Contáctanos</button>
         </section>
 
         <section id="productos" class="seccion-productos">
         <h2>Nuestros Productos</h2>
-        
-        <div class="contenedor-platos">
-            <!-- Columna Lechona -->
-            <div class="columna-categoria">
-                <h3 class="titulo-categoria">Lechona</h3>
-                
-                <article class="plato">
-                    <div class="plato-info">
-                        <h4>Plato Estándar</h4>
-                        <span class="precio">$12.000</span>
-                    </div>
-                    <div class="plato-img">IMG</div>
-                    <div class="tooltip">Masa de maíz con cerdo, pollo, huevo, zanahoria y arveja.</div>
-                </article>
+        <div class="contenedor-platos" id="contenedor-productos"></div>
+        </section>
 
-                <article class="plato">
-                    <div class="plato-info">
-                        <h4>Plato Especial</h4>
-                        <span class="precio">$15.000</span>
-                    </div>
-                    <div class="plato-img">IMG</div>
-                    <div class="tooltip">Cuero crujiente, carne de cerdo tierna y arveja amarilla.</div>
-                </article>
-            </div>
-
-            <!-- Columna Tamales -->
-            <div class="columna-categoria">
-                <h3 class="titulo-categoria">Tamales</h3>
-                
-                <article class="plato">
-                    <div class="plato-info">
-                        <h4>Tamal Tolimense</h4>
-                        <span class="precio">$7.000</span>
-                    </div>
-                    <div class="plato-img">IMG</div>
-                    <div class="tooltip">Receta tradicional envuelta en hoja de plátano.</div>
-                </article>
-
-                <article class="plato">
-                    <div class="plato-info">
-                        <h4>Tamal Volteado</h4>
-                        <span class="precio">$15.000</span>
-                    </div>
-                    <div class="plato-img">IMG</div>
-                    <div class="tooltip">Doble porción de carne y cama de lechona.</div>
-                </article>
-            </div>
-        </div>
-    </section>
         <section id="ubicacion" class="seccion-ubicacion">
             <h2>Visítanos</h2>
             
@@ -114,8 +78,8 @@
                     </div>
                     
                     <div class="botones-contacto">
-                        <button class="contacto-button">Contáctanos</button>
-                        <button class="contacto-button"><a href="cotizacion.html">Solicitar Cotización</a></button>
+                        <button class="contacto-button btn-whatsapp-directo">Contáctanos</button>
+                        <a href="cotizacion.html" class="contacto-button" style="text-decoration: none; display: inline-block;">Solicitar Cotización</a>
                     </div>
                 </div>
             </div>
@@ -123,11 +87,40 @@
     </main>
 
     <footer class="footer-principal">
-        <div class="contenedor-footer">
+        <div class="footer-grid">
+            <div class="footer-columna">
+                <h3>El Punto</h3>
+                <p>Auténtica lechona y tamales tolimenses preparados bajo tradición artesanal. Punto de fábrica directo a tu mesa en Bogotá.</p>
+            </div>
+
+            <div class="footer-columna">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#productos">Nuestros Productos</a></li>
+                    <li><a href="cotizacion.html">Cotiza tu Pedido</a></li>
+                    <li><a href="index.html#ubicacion">Ubicación y Horarios</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h4>Contacto y Pedidos</h4>
+                <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
+                <p><strong>Atención en punto:</strong> Vie - Dom (8:00 AM - 4:00 PM)</p>
+                <p><strong>Pedidos especiales:</strong> Jueves y Viernes</p>
+                <div class="footer-redes">
+                    <a href="https://wa.me/573000000000" target="_blank" class="btn-social">WhatsApp</a>
+                    <a href="#" target="_blank" class="btn-social">Instagram</a>
+                    <a href="#" target="_blank" class="btn-social">Facebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
             <p>&copy; 2026 Lechonería y Tamalería El Punto. Todos los derechos reservados.</p>
             <a href="sesion.html" class="enlace-admin">Acceso Administrativo</a>
         </div>
     </footer>
-
+<script src="js/inicio.js"></script>
 </body>
 </html>
